@@ -1,0 +1,23 @@
+{% load i18n %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<body class="p-3 mb-2 bg-info text-dark ">
+	<strong><u><h3 class="d-flex justify-content-center">{% trans "Bienvenido a Decide, " %} {% if user.is_authenticated %}{{ user.username }}{% else %}{% trans "invitado" %}{% endif %}</h3></strong></u>
+	<p>
+		<strong class="d-flex justify-content-center"> {% trans "Usuarios registrados:" %} {{ count }}</strong> 
+	</p>
+
+  {% if user.is_authenticated %}
+    <p class="d-flex justify-content-center"></p><a class = "d-flex justify-content-center text-dark btn btn-warning" href="/authentication/accounts/logout/">Cerrar sesión</a></p>
+    <hr>
+    <p class="d-flex justify-content-center"></p><a class = "d-flex justify-content-center text-dark btn btn-danger" href="/authentication/accounts/password_change/">Cambiar contraseña</a></p>
+  {%endif%}
+
+  {% if not user.is_authenticated %}
+    <p class="d-flex justify-content-center"><a class = "d-flex justify-content-center text-dark btn bg-success" href="/authentication/accounts/login/">Iniciar sesión</a></p>
+    <br>
+    <p class="d-flex justify-content-center"><a class = "d-flex justify-content-center text-dark btn bg-warning" href="/authentication/registerUser/">Registrarse</a></p>
+    <br>
+    <p class="d-flex justify-content-center"><a class = "d-flex justify-content-center text-dark btn btn-danger" href="/authentication/accounts/password_reset">Olvidé mi contraseña</a></p>
+  {%endif%}
+</body>

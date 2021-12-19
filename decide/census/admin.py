@@ -1,6 +1,7 @@
 from django.contrib import admin
 
 from .models import Census
+from authentication.models import Profile
 
 
 class CensusAdmin(admin.ModelAdmin):
@@ -11,3 +12,4 @@ class CensusAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Census, CensusAdmin)
+admin.site.register(Profile)

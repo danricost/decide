@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+{% if user.is_authenticated %}
+  <script>
+  location.href="/"
+  </script>
+{%endif%}
+
+<body class="p-3 mb-2 bg-info text-dark ">
+  <strong><u><h3 class="d-flex justify-content-center">Formulario de login</h3></u></strong>
+  <br>
+ <div class="d-flex justify-content-center"> 
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <p class = "d-flex justify-content-center">
+      <input type="submit" class="btn btn-success mr-5" id="Login" value="Login"></input>
+      <a href="/authentication/" class="text-dark btn btn-danger">Regresar</a>
+    </p>
+    {% for message in messages %}
+        <p class="item" id="messages">{{ message }}</p>
+    {% endfor%}
+  </form>
+</div>
+</body>
